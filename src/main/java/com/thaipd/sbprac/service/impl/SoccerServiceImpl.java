@@ -32,7 +32,6 @@ public class SoccerServiceImpl implements SoccerService {
     }
 
     public Player addPlayer(Long teamId, String name, String position, int number) {
-
         Optional<Team> teamOptional = teamRepository.findById(teamId);
         if (!teamOptional.isPresent()) {
             logger.error("Team not found");
@@ -53,5 +52,11 @@ public class SoccerServiceImpl implements SoccerService {
         logger.debug("Delete player number: {}", playerNum);
         playerRepository.testDeletePlayerByNumber(playerNum);
         return 0;
+    }
+
+    //@Transactional
+    public int deletePlayerByNumberCustom(Integer playerNum) {
+        logger.debug("deletePlayerByNumberCustom  playerNum={}", playerNum);
+        return playerRepository.deletePlayerCustom(playerNum);
     }
 }

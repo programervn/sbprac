@@ -17,6 +17,8 @@ import java.util.Optional;
 /*
 reference:
     https://dzone.com/articles/spring-boot-jpa-hibernate-oracle
+    https://billykorando.com/2019/05/06/jpa-or-sql-in-a-spring-boot-application-why-not-both/
+    https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
  */
 @SpringBootApplication
 public class SbpracApplication implements CommandLineRunner {
@@ -56,8 +58,20 @@ public class SbpracApplication implements CommandLineRunner {
         Integer playerNumber = 6;
         soccerService.deletePlayerByNumber(playerNumber);
     }
+
+    public void testInsertDuplicateNumber() {
+        Long teamId = 2L;
+        soccerService.addPlayer(teamId,"Xavi Hernandez", "Midfielder", 3);
+    }
+
+    public void testDeletePlayerCustom() {
+        Integer playerNumber = 6;
+        int n = soccerService.deletePlayerByNumberCustom(playerNumber);
+        logger.info("Number player deleted: {}", n);
+    }
     @Override
     public void run(String... args) {
-        testDeletePlayer();
+        //soccerService.addPlayer(1L,"Xavi Hernandez", "Midfielder", 6);
+        testDeletePlayerCustom();
     }
 }

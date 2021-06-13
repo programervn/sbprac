@@ -11,4 +11,5 @@ public interface SoccerService {
     public List<Player> getAllTeamPlayers(Long teamId);
     public Player addPlayer(Long teamId, String name, String position, int number);
     public int deletePlayerByNumber(Integer playerNum);
+    public int deletePlayerByNumberCustom(Integer playerNum);
 }
