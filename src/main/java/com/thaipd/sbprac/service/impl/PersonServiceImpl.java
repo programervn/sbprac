@@ -1,7 +1,8 @@
-package com.thaipd.sbprac.service;
+package com.thaipd.sbprac.service.impl;
 
 import com.thaipd.sbprac.entity.Person;
 import com.thaipd.sbprac.repository.PersonRepository;
+import com.thaipd.sbprac.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,16 +1,14 @@
-package com.thaipd.sbprac.service;
+package com.thaipd.sbprac.service.impl;
 
-import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
 import com.thaipd.sbprac.repository.PlayerRepository;
 import com.thaipd.sbprac.repository.TeamRepository;
+import com.thaipd.sbprac.service.SoccerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service

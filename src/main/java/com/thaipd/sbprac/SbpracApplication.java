@@ -1,9 +1,8 @@
 package com.thaipd.sbprac;
 
-import com.thaipd.sbprac.entity.Person;
 import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
-import com.thaipd.sbprac.service.PersonServiceImpl;
+import com.thaipd.sbprac.service.impl.PersonServiceImpl;
 import com.thaipd.sbprac.service.SoccerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
