@@ -27,10 +27,10 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        Long teamId = 1L;
+    public void run(String... args) {
+        Long teamId = 2L;
         Optional<Team> teamOptional = soccerService.findTeamById(teamId);
-        if (!teamOptional.isPresent()) {
+        if (teamOptional.isEmpty()) {
             logger.error("Not found team");
         } else {
             Team team = teamOptional.get();
