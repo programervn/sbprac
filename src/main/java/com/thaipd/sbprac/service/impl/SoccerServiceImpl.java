@@ -1,5 +1,6 @@
 package com.thaipd.sbprac.service.impl;
 
+import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
 import com.thaipd.sbprac.repository.PlayerRepository;
 import com.thaipd.sbprac.repository.TeamRepository;
@@ -8,7 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,25 +26,32 @@ public class SoccerServiceImpl implements SoccerService {
         return teamRepository.findById(teamId);
     }
 
-//    public List<Player> getAllTeamPlayers(Long teamId) {
-//        List<Player> result = playerRepository.findByTeamId(teamId);
-//        return result;
-//    }
-//
-//    public Player addPlayer(Long teamId, String name, String position, int number) {
-//
-//        Optional<Team> teamOptional = teamRepository.findById(teamId);
-//        if (!teamOptional.isPresent()) {
-//            logger.error("Team not found");
-//            return null;
-//        }
-//        Team team = teamOptional.get();
-//        Player newPlayer = new Player();
-//        newPlayer.setName(name);
-//        newPlayer.setPosition(position);
-//        newPlayer.setNum(number);
-//        newPlayer.setTeam(team);
-//        playerRepository.save(newPlayer);
-//        return newPlayer;
-//    }
+    public List<Player> getAllTeamPlayers(Long teamId) {
+        List<Player> result = playerRepository.findByTeamId(teamId);
+        return result;
+    }
+
+    public Player addPlayer(Long teamId, String name, String position, int number) {
+
+        Optional<Team> teamOptional = teamRepository.findById(teamId);
+        if (!teamOptional.isPresent()) {
+            logger.error("Team not found");
+            return null;
+        }
+        Team team = teamOptional.get();
+        Player newPlayer = new Player();
+        newPlayer.setName(name);
+        newPlayer.setPosition(position);
+        newPlayer.setNum(number);
+        newPlayer.setTeam(team);
+        playerRepository.save(newPlayer);
+        return newPlayer;
+    }
+
+    @Transactional
+    public int deletePlayerByNumber(Integer playerNum) {
+        logger.debug("Delete player number: {}", playerNum);
+        playerRepository.testDeletePlayerByNumber(playerNum);
+        return 0;
+    }
 }

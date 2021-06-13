@@ -1,14 +1,14 @@
 package com.thaipd.sbprac.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Team {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "team_Sequence")
@@ -21,10 +21,12 @@ public class Team {
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
             mappedBy = "team")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private List<Player> players;
 
-    @Override
-    public String toString() {
-        return "Team {name=" + this.name + "}";
-    }
+//    @Override
+//    public String toString() {
+//        return "Team {name=" + this.name + "}";
+//    }
 }

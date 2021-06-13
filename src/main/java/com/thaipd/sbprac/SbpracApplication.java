@@ -14,6 +14,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 import java.util.Optional;
 
+/*
+reference:
+    https://dzone.com/articles/spring-boot-jpa-hibernate-oracle
+ */
 @SpringBootApplication
 public class SbpracApplication implements CommandLineRunner {
     private static Logger logger = LoggerFactory.getLogger(SbpracApplication.class);
@@ -26,26 +30,34 @@ public class SbpracApplication implements CommandLineRunner {
         SpringApplication.run(SbpracApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) {
-        Long teamId = 2L;
+    public void testJpa1() {
+        Long teamId = 1L;
         Optional<Team> teamOptional = soccerService.findTeamById(teamId);
         if (teamOptional.isEmpty()) {
             logger.error("Not found team");
         } else {
             Team team = teamOptional.get();
-            logger.info("Team info: {}", team.getName());
+            logger.info("Team info: {}", team);
             List<Player> teamPlayers = team.getPlayers();
             for (Player p : teamPlayers) {
                 logger.info("Player: {}", p);
             }
         }
-        //soccerService.addPlayer(2L,"Xavi Hernandez", "Midfielder", 6);
+        soccerService.addPlayer(teamId,"Xavi Hernandez", "Midfielder", 6);
 
-//        List<Player> players = soccerService.getAllTeamPlayers(teamId);
-//        for(Player player : players)
-//        {
-//            System.out.println("Introducing Barca player => " + player);
-//        }
+        List<Player> players = soccerService.getAllTeamPlayers(teamId);
+        for(Player player : players)
+        {
+            logger.info("Introducing Barca player => {}" + player);
+        }
+    }
+
+    public void testDeletePlayer() {
+        Integer playerNumber = 6;
+        soccerService.deletePlayerByNumber(playerNumber);
+    }
+    @Override
+    public void run(String... args) {
+        testDeletePlayer();
     }
 }

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface SoccerService {
     public Optional<Team> findTeamById(Long teamId);
-    //public List<Player> getAllTeamPlayers(Long teamId);
-    //public Player addPlayer(Long teamId, String name, String position, int number);
+    public List<Player> getAllTeamPlayers(Long teamId);
+    public Player addPlayer(Long teamId, String name, String position, int number);
+    public int deletePlayerByNumber(Integer playerNum);
 }

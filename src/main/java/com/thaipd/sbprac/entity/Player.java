@@ -1,13 +1,13 @@
 package com.thaipd.sbprac.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Player {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "player_Sequence")
@@ -17,18 +17,21 @@ public class Player {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "num")
-    private int num;
+    //player's number is unique
+    @Column(name = "num", unique=true)
+    private Integer num;
 
     @Column(name = "position")
     private String position;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", nullable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Team team;
 
-    @Override
-    public String toString() {
-        return "Player {team=" + this.team.getName() + ", name=" + this.name + "}";
-    }
+//    @Override
+//    public String toString() {
+//        return "Player {team=" + this.team.getName() + ", name=" + this.name + "}";
+//    }
 }
