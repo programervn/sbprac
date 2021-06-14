@@ -69,9 +69,23 @@ public class SbpracApplication implements CommandLineRunner {
         int n = soccerService.deletePlayerByNumberCustom(playerNumber);
         logger.info("Number player deleted: {}", n);
     }
+
+    public void testGetPlayerByName() {
+        String name = "mes";
+        List<Player> playerList = soccerService.findPlayersByName(name);
+        logger.debug("Total player find: {}", playerList.size());
+        for (Player p : playerList) {
+            logger.info("{}", p);
+        }
+    }
+
+    public void testGeneral() {
+        Player player = soccerService.getPlayerById(1L);
+        logger.info("{}", player);
+    }
     @Override
     public void run(String... args) {
         //soccerService.addPlayer(1L,"Xavi Hernandez", "Midfielder", 6);
-        testDeletePlayerCustom();
+        testGeneral();
     }
 }

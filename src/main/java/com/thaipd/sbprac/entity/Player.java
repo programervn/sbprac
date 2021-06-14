@@ -30,8 +30,13 @@ public class Player {
     @ToString.Exclude
     private Team team;
 
-//    @Override
-//    public String toString() {
-//        return "Player {team=" + this.team.getName() + ", name=" + this.name + "}";
-//    }
+    @Override
+    public String toString() {
+        return "Player {"
+                + "team_id:" + this.team.getId()
+                + ", name:" + this.name
+                + ", num:" + this.num.toString()
+                + ", position:" + this.position
+                + "}";
+    }
 }

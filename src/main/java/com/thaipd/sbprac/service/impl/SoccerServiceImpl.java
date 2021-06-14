@@ -3,6 +3,7 @@ package com.thaipd.sbprac.service.impl;
 import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
 import com.thaipd.sbprac.repository.PlayerRepository;
+import com.thaipd.sbprac.repository.PlayerRowMapper;
 import com.thaipd.sbprac.repository.TeamRepository;
 import com.thaipd.sbprac.service.SoccerService;
 import org.slf4j.Logger;
@@ -58,5 +59,18 @@ public class SoccerServiceImpl implements SoccerService {
     public int deletePlayerByNumberCustom(Integer playerNum) {
         logger.debug("deletePlayerByNumberCustom  playerNum={}", playerNum);
         return playerRepository.deletePlayerCustom(playerNum);
+    }
+
+    public List<Player> findPlayersByName(String name) {
+        logger.debug("Query player with name like: {}", name);
+        return playerRepository.findByNameLike(name.toUpperCase());
+    }
+
+    public Player getPlayerById(Long id) {
+        Optional<Player> playerOptional = playerRepository.findById(id);
+        if (playerOptional.isPresent())
+            return playerOptional.get();
+        else
+            return null;
     }
 }

@@ -13,8 +13,13 @@ import java.util.List;
 public interface PlayerRepository extends JpaRepository<Player, Long>, PlayerRepositoryCustom {
     List<Player> findByTeamId(Long teamId);
     void deletePlayerById(Long playerID);
+    List<Player> findByNameContainingIgnoreCase(String name);
+    List<Player> findByNameLike(String name);
 
     @Modifying
     @Query(value = "delete from Player p where p.num=:num")
     void testDeletePlayerByNumber(@Param("num") Integer id);
+
+    @Query(nativeQuery=true, value = "select * from player a where lower(a.name) like %:name%")
+    List<Player> findPlayersByNameQuery(@Param("name") String name);
 }

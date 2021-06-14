@@ -19,14 +19,14 @@ public class Team {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             mappedBy = "team")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private List<Player> players;
 
-//    @Override
-//    public String toString() {
-//        return "Team {name=" + this.name + "}";
-//    }
+    @Override
+    public String toString() {
+        return "Team {id=" + id + ", name=" + this.name + "}";
+    }
 }
