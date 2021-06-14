@@ -15,11 +15,7 @@ public class PlayerRowMapper implements RowMapper<Player> {
         player.setName(rs.getString("name"));
         player.setNum(rs.getInt("num"));
         player.setPosition(rs.getString("position"));
-        //????
-        Team team = new Team();
-        team.setId(rs.getLong("team_id"));
-        System.out.println("=======================>team_id:" + team.getId());
-        player.setTeam(team);
+        player.setTeamId(rs.getLong("team_id"));
         return player;
     }
 }

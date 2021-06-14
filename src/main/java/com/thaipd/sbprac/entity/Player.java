@@ -25,12 +25,12 @@ public class Player {
     private String position;
 
     @Column(name = "team_id")
-    private Long team_id;
+    private Long teamId;
 
     @Override
     public String toString() {
         return "Player {"
-                + "team_id:" + this.team_id
+                + "team_id:" + this.teamId
                 + ", name:" + this.name
                 + ", num:" + this.num.toString()
                 + ", position:" + this.position

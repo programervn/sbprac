@@ -16,4 +16,6 @@ public interface SoccerService {
     public int deletePlayerByNumberCustom(Integer playerNum);
     public List<Player> findPlayersByName(String name);
     public Player getPlayerById(Long id);
+    public int getTotalPlayerCount();
+    public List<Player> getPlayersProc(String playerName);
 }

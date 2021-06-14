@@ -20,4 +20,11 @@ public class PlayerRepositoryCustomImpl implements PlayerRepositoryCustom {
         String sql = "select * from player a where a.id = :id";
         return jdbcTemplate.queryForObject(sql, new PlayerRowMapper(), new Object[]{id});
     }
+
+    public int getTotalPlayerCount() {
+        String sql = "SELECT COUNT(*) FROM player";
+
+        int numOfPlayer = jdbcTemplate.queryForObject(sql, Integer.class);
+        return numOfPlayer;
+    }
 }

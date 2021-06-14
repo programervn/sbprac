@@ -23,6 +23,14 @@ public class SoccerServiceImpl implements SoccerService {
     @Autowired
     private TeamRepository teamRepository;
 
+    public List<Player> getPlayersProc(String playerName) {
+        List<Player> playerList = playerRepository.getPlayerData("Thaipd");
+        for (Player p : playerList) {
+            logger.info("********* {}", p);
+        }
+        return playerList;
+    }
+
     public Optional<Team> findTeamById(Long teamId) {
         return teamRepository.findById(teamId);
     }
@@ -38,12 +46,11 @@ public class SoccerServiceImpl implements SoccerService {
             logger.error("Team not found");
             return null;
         }
-        Team team = teamOptional.get();
         Player newPlayer = new Player();
         newPlayer.setName(name);
         newPlayer.setPosition(position);
         newPlayer.setNum(number);
-        newPlayer.setTeam(team);
+        newPlayer.setTeamId(teamId);
         playerRepository.save(newPlayer);
         return newPlayer;
     }
@@ -72,5 +79,9 @@ public class SoccerServiceImpl implements SoccerService {
             return playerOptional.get();
         else
             return null;
+    }
+
+    public int getTotalPlayerCount() {
+        return playerRepository.getTotalPlayerCount();
     }
 }

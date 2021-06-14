@@ -2,6 +2,8 @@ package com.thaipd.sbprac;
 
 import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
+import com.thaipd.sbprac.service.OraclePackageService;
+import com.thaipd.sbprac.service.PersonService;
 import com.thaipd.sbprac.service.impl.PersonServiceImpl;
 import com.thaipd.sbprac.service.SoccerService;
 import org.slf4j.Logger;
@@ -24,9 +26,11 @@ reference:
 public class SbpracApplication implements CommandLineRunner {
     private static Logger logger = LoggerFactory.getLogger(SbpracApplication.class);
     @Autowired
-    PersonServiceImpl personService;
+    PersonService personService;
     @Autowired
     SoccerService soccerService;
+    @Autowired
+    OraclePackageService oraclePackageService;
 
     public static void main(String[] args) {
         SpringApplication.run(SbpracApplication.class, args);
@@ -40,10 +44,6 @@ public class SbpracApplication implements CommandLineRunner {
         } else {
             Team team = teamOptional.get();
             logger.info("Team info: {}", team);
-            List<Player> teamPlayers = team.getPlayers();
-            for (Player p : teamPlayers) {
-                logger.info("Player: {}", p);
-            }
         }
         soccerService.addPlayer(teamId,"Xavi Hernandez", "Midfielder", 6);
 
@@ -80,8 +80,8 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     public void testGeneral() {
-        Player player = soccerService.getPlayerById(1L);
-        logger.info("{}", player);
+        //oraclePackageService.callStoredProcedure();
+        soccerService.getPlayersProc("Thaipd");
     }
     @Override
     public void run(String... args) {
