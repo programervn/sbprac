@@ -18,13 +18,6 @@ public class Team {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "team")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private List<Player> players;
-
     @Override
     public String toString() {
         return "Team {id=" + id + ", name=" + this.name + "}";

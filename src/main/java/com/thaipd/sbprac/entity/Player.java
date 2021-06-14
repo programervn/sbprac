@@ -24,16 +24,13 @@ public class Player {
     @Column(name = "position")
     private String position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", nullable = false)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Team team;
+    @Column(name = "team_id")
+    private Long team_id;
 
     @Override
     public String toString() {
         return "Player {"
-                + "team_id:" + this.team.getId()
+                + "team_id:" + this.team_id
                 + ", name:" + this.name
                 + ", num:" + this.num.toString()
                 + ", position:" + this.position
