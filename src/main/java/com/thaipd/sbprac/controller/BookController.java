@@ -25,6 +25,31 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
+    // For testing
+    @GetMapping("/test")
+    //(name = "id")
+    String testBook(@RequestParam String action, @RequestParam String q) {
+        logger.info("Test book with action={}, q={}", action, q);
+        String returnMsg = "INIT";
+        //Todo code here
+        switch (action.toLowerCase()) {
+            case "del":
+            case "delete":
+                logger.info("Action delete .....");
+                break;
+            case "create":
+                logger.info("Action create .....");
+                break;
+            case "update":
+                logger.info("Action update .....");
+                break;
+            default:
+                logger.info("Action others .....");
+                break;
+        }
+        return  returnMsg;
+    }
+
     @GetMapping({"", "/"})
     public List<Book> findAllPlayer() {
         logger.info("Get all book");
@@ -49,6 +74,8 @@ public class BookController {
         for (Book b : bookList) {
             logger.debug("{}", b);
         }
+
+        bookList = bookRepository.customFindAllBook();
         return  bookList;
     }
 

@@ -36,6 +36,7 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
     @PostConstruct
     void init() {
         // o_name and O_NAME, same
+        logger.info("BookRepositoryCustomImpl PostConstruct");
         jdbcTemplate.setResultsMapCaseInsensitive(true);
     }
 
