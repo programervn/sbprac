@@ -20,7 +20,15 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<Book> findBookByName(String name) {
+        return bookRepository.findBookByName(name);
+    }
+
+    public List<Book> findBookByName2(String name) {
         return bookRepository.findBookByName2(name);
+    }
+
+    public List<Book> findBookByName3(String name) {
+        return bookRepository.findBookByName3(name);
     }
 
     public BigDecimal findBookPrice(Long id) {

@@ -86,8 +86,8 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     public void testGeneral() {
-        BigDecimal price = bookService.findBookPrice(3L);
-        logger.info("Price: {}", price);
+        List<Book> bookList = bookService.findBookByName2("a");
+        logger.info("bookList: {}", bookList);
     }
     @Override
     public void run(String... args) {

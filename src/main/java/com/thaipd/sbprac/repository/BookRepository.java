@@ -24,7 +24,9 @@ import java.util.Optional;
 
 /*
     Class to practise with database stored procedure/function
-    ref: https://mkyong.com/spring-boot/spring-boot-jdbc-stored-procedure-examples/
+    ref:
+        https://mkyong.com/spring-boot/spring-boot-jdbc-stored-procedure-examples/
+        https://www.codejava.net/frameworks/spring/spring-simplejdbccall-examples
  */
 @Repository
 public class BookRepository {
@@ -153,6 +155,8 @@ public class BookRepository {
     o_retcode OUT INT,
     o_retdesc OUT VARCHAR2,
     o_c_book OUT SYS_REFCURSOR);
+
+    With BeanPropertyRowMapper, the column select may be different with entity
      */
     public List<Book> findBookByName2(String name) {
         // Convert o_c_book SYS_REFCURSOR to List<Book>
@@ -167,6 +171,44 @@ public class BookRepository {
         //simpleJdbcCall.addDeclaredParameter(new SqlParameter("p_name", Types.VARCHAR));
         //simpleJdbcCall.addDeclaredParameter(new SqlOutParameter("po_retcode", Types.INTEGER));
         //simpleJdbcCall.addDeclaredParameter(new SqlOutParameter("po_retdesc", Types.VARCHAR));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource()
+                .addValue("p_name", name);
+
+        //Map out = simpleJdbcCall.execute(paramaters);
+        Map<String, Object> out = simpleJdbcCall.execute(paramaters);
+
+        if (out == null) {
+            logger.warn("Not found any book");
+            return Collections.emptyList();
+        } else {
+            BigDecimal o_retcode = (BigDecimal)out.get("o_retcode");
+            //cannot cast to Integer
+            //Integer o_retcode = (Integer)out.get("o_retcode");
+            String o_retdesc = (String)out.get("o_retdesc");
+            logger.info("******o_retcode={}, o_retdesc={}", o_retcode, o_retdesc);
+            return (List) out.get("o_c_book");
+        }
+    }
+
+    /*
+    this example call direct stored procedure in package
+    and get multiple OUT parameters include sys refcursor
+    PROCEDURE get_book_by_name2(
+    p_name IN BOOKS.NAME%TYPE,
+    o_retcode OUT INT,
+    o_retdesc OUT VARCHAR2,
+    o_c_book OUT SYS_REFCURSOR);
+     */
+    public List<Book> findBookByName3(String name) {
+        // Convert o_c_book SYS_REFCURSOR to List<Book>
+        simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
+                //package name
+                .withCatalogName("book_pkg")
+                //calling function
+                .withProcedureName("get_book_by_name3")
+                .returningResultSet("o_c_book",
+                        new BookRowMapper());
 
         SqlParameterSource paramaters = new MapSqlParameterSource()
                 .addValue("p_name", name);
