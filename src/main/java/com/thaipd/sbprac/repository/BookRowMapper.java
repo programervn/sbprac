@@ -1,6 +1,6 @@
 package com.thaipd.sbprac.repository;
 
-import com.thaipd.sbprac.model.Book;
+import com.thaipd.sbprac.entity.Book;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -2,11 +2,10 @@ package com.thaipd.sbprac;
 
 import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
-import com.thaipd.sbprac.model.Book;
+import com.thaipd.sbprac.entity.Book;
 import com.thaipd.sbprac.service.BookService;
 import com.thaipd.sbprac.service.OraclePackageService;
 import com.thaipd.sbprac.service.PersonService;
-import com.thaipd.sbprac.service.impl.PersonServiceImpl;
 import com.thaipd.sbprac.service.SoccerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,8 +84,7 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     public void testGeneral() {
-        List<Book> bookList = bookService.findBookByName2("a");
-        logger.info("bookList: {}", bookList);
+
     }
     @Override
     public void run(String... args) {

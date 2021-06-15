@@ -13,7 +13,7 @@ import org.springframework.web.servlet.function.EntityResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/player")
+@RequestMapping("/api/v1/players")
 public class PlayerController {
     private static Logger logger = LoggerFactory.getLogger(PlayerController.class);
     @Autowired

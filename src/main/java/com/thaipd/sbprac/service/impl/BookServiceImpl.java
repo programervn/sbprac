@@ -1,6 +1,6 @@
 package com.thaipd.sbprac.service.impl;
 
-import com.thaipd.sbprac.model.Book;
+import com.thaipd.sbprac.entity.Book;
 import com.thaipd.sbprac.repository.BookRepository;
 import com.thaipd.sbprac.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,13 @@ import java.util.Optional;
 public class BookServiceImpl implements BookService {
     @Autowired
     BookRepository bookRepository;
-    @Override
-    public Optional<Book> findById(Long id) {
+
+    //if not found, then return null
+    public Book findByIdJpa(Long id) {
+        return bookRepository.findById(id).orElse(null);
+    }
+
+    public Optional<Book> findByIdPkg(Long id) {
         return bookRepository.findByIdPkg(id);
     }
 

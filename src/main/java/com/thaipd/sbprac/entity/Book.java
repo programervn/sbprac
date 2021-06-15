@@ -1,8 +1,14 @@
-package com.thaipd.sbprac.model;
+package com.thaipd.sbprac.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "book_Sequence")
+    @SequenceGenerator(name = "book_Sequence", allocationSize = 1, sequenceName = "BOOK_SEQ")
     private Long id;
     private String name;
     private BigDecimal price;
