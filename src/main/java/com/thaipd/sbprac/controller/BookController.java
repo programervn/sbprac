@@ -1,7 +1,6 @@
 package com.thaipd.sbprac.controller;
 
 import com.thaipd.sbprac.entity.Book;
-import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.repository.BookRepository;
 import com.thaipd.sbprac.service.BookService;
 import org.slf4j.Logger;
@@ -45,9 +44,14 @@ public class BookController {
                 break;
             default:
                 logger.info("Action others .....");
-                break;
+                List<Object[]> list = bookRepository.customFindSelectedColumn();
+                logger.info("list: {}", list);
+                for (Object[] obj : list) {
+                    logger.info("Book id={}, name={}", obj[0], obj[1]);
+                }
+                return list.toString();
         }
-        return  returnMsg;
+        return returnMsg;
     }
 
     @GetMapping({"", "/"})
