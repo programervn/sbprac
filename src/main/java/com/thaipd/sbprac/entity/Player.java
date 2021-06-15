@@ -27,8 +27,8 @@ public class Player {
     @Column(name = "team_id")
     private Long teamId;
 
-    @Override
-    public String toString() {
+    //@Override
+    public String toString1() {
         return "Player {"
                 + "team_id:" + this.teamId
                 + ", name:" + this.name

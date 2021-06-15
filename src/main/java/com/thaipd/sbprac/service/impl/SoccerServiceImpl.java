@@ -22,13 +22,16 @@ public class SoccerServiceImpl implements SoccerService {
     private PlayerRepository playerRepository;
     @Autowired
     private TeamRepository teamRepository;
+    public Integer funcGetCount(Integer i, String s) {
+        return playerRepository.funcGetCount(i, s);
+    }
 
-    public List<Player> getPlayersProc(String playerName) {
-        List<Player> playerList = playerRepository.getPlayerData("Thaipd");
-        for (Player p : playerList) {
-            logger.info("********* {}", p);
-        }
-        return playerList;
+    public String funcGetCount2(Integer i, String s) {
+        return playerRepository.funcGetCount2(i, s);
+    }
+
+    public List<Player> procFindAll(int orderByDate) {
+        return  playerRepository.procFindAll(orderByDate);
     }
 
     public Optional<Team> findTeamById(Long teamId) {

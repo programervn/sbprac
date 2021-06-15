@@ -17,5 +17,8 @@ public interface SoccerService {
     public List<Player> findPlayersByName(String name);
     public Player getPlayerById(Long id);
     public int getTotalPlayerCount();
-    public List<Player> getPlayersProc(String playerName);
+    public List<Player> procFindAll(int orderByDate);
+
+    public Integer funcGetCount(Integer i, String s);
+    public String funcGetCount2(Integer i, String s);
 }

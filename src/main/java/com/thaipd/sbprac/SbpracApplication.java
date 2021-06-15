@@ -2,6 +2,8 @@ package com.thaipd.sbprac;
 
 import com.thaipd.sbprac.entity.Player;
 import com.thaipd.sbprac.entity.Team;
+import com.thaipd.sbprac.model.Book;
+import com.thaipd.sbprac.service.BookService;
 import com.thaipd.sbprac.service.OraclePackageService;
 import com.thaipd.sbprac.service.PersonService;
 import com.thaipd.sbprac.service.impl.PersonServiceImpl;
@@ -13,6 +15,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +34,9 @@ public class SbpracApplication implements CommandLineRunner {
     SoccerService soccerService;
     @Autowired
     OraclePackageService oraclePackageService;
+
+    @Autowired
+    BookService bookService;
 
     public static void main(String[] args) {
         SpringApplication.run(SbpracApplication.class, args);
@@ -80,8 +86,8 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     public void testGeneral() {
-        //oraclePackageService.callStoredProcedure();
-        soccerService.getPlayersProc("Thaipd");
+        BigDecimal price = bookService.findBookPrice(3L);
+        logger.info("Price: {}", price);
     }
     @Override
     public void run(String... args) {
