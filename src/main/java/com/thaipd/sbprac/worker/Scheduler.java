@@ -11,7 +11,7 @@ import java.util.Date;
 @Component
 public class Scheduler {
     private static final Logger logger = LoggerFactory.getLogger(Scheduler.class);
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 30000)
     public void fixedRateSch() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 

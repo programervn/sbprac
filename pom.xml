@@ -15,6 +15,7 @@
     <description>Prac project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
+        <!--<tomcat.version>9.0.46</tomcat.version>-->
     </properties>
     <dependencies>
         <dependency>
