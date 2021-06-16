@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +25,9 @@ reference:
     https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
  */
 @SpringBootApplication
+@EnableScheduling
 public class SbpracApplication implements CommandLineRunner {
-    private static Logger logger = LoggerFactory.getLogger(SbpracApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(SbpracApplication.class);
     @Autowired
     PersonService personService;
     @Autowired

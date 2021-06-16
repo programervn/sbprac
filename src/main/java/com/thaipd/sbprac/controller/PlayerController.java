@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/players")
 public class PlayerController {
-    private static Logger logger = LoggerFactory.getLogger(PlayerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PlayerController.class);
     @Autowired
     SoccerService soccerService;
 

@@ -21,14 +21,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-//@Repository
+@Repository
 public class PlayerRepositoryCustomImpl implements PlayerRepositoryCustom {
-    private static Logger logger = LoggerFactory.getLogger(PlayerRepositoryCustomImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PlayerRepositoryCustomImpl.class);
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall simpleJdbcCall;
     private static final String returnds = "returnds";
-    private static final String pResult = "p_result";
 
     @PostConstruct
     public void init() {

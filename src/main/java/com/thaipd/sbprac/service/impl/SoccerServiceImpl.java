@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 public class SoccerServiceImpl implements SoccerService {
-    private static Logger logger = LoggerFactory.getLogger(SoccerServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(SoccerServiceImpl.class);
     @Autowired
     private PlayerRepository playerRepository;
     @Autowired

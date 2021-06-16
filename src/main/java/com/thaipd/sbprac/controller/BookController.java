@@ -17,7 +17,7 @@ for rapid testing, controller call repository instead of service
 @RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
-    private static Logger logger = LoggerFactory.getLogger(BookController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
     @Autowired
     BookService bookService;

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    private static Logger logger = LoggerFactory.getLogger(PersonServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PersonServiceImpl.class);
     @Autowired
     PersonRepository personRepository;
 

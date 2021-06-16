@@ -26,7 +26,7 @@ import java.util.Optional;
  */
 @Repository
 public class BookRepositoryCustomImpl implements BookRepositoryCustom {
-    private static Logger logger = LoggerFactory.getLogger(BookRepositoryCustomImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookRepositoryCustomImpl.class);
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

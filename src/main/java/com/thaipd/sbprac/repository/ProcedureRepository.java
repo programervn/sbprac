@@ -29,7 +29,7 @@ https://lalitjc.wordpress.com/2013/07/02/different-ways-of-calling-stored-proced
 
 @Repository
 public class ProcedureRepository {
-    private static Logger logger = LoggerFactory.getLogger(ProcedureRepository.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProcedureRepository.class);
     @Autowired
     EntityManager entityManager;
 

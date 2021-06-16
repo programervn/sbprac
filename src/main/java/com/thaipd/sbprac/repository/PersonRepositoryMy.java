@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 public class PersonRepositoryMy {
-    private static Logger logger = LoggerFactory.getLogger(PersonRepositoryMy.class);
+    private static final Logger logger = LoggerFactory.getLogger(PersonRepositoryMy.class);
     @Autowired
     JdbcTemplate jdbcTemplate;
 

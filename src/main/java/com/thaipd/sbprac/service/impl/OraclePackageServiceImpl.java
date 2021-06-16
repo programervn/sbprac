@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OraclePackageServiceImpl implements OraclePackageService {
-    private static Logger logger = LoggerFactory.getLogger(OraclePackageServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(OraclePackageServiceImpl.class);
 
     @Autowired
     ProcedureRepository procedureRepository;
