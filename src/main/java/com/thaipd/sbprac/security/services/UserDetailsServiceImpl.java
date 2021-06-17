@@ -1,7 +1,7 @@
 package com.thaipd.sbprac.security.services;
 
 import com.thaipd.sbprac.entity.User;
-import com.thaipd.sbprac.repository.UserRepository;
+import com.thaipd.sbprac.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

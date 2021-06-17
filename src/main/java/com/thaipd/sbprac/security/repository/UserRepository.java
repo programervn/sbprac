@@ -1,4 +1,4 @@
-package com.thaipd.sbprac.repository;
+package com.thaipd.sbprac.security.repository;
 
 import com.thaipd.sbprac.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
