@@ -17,6 +17,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
 reference:
@@ -86,7 +88,11 @@ public class SbpracApplication implements CommandLineRunner {
     }
 
     public void testGeneral() {
-
+        String REGEX = "\\D[0-9]{4,8}\\D";
+        String INPUT = "01234";
+        Pattern p = Pattern.compile(REGEX);
+        Matcher m = p.matcher(INPUT);   // get a matcher object
+        logger.info("Match? ", m.matches());
     }
     @Override
     public void run(String... args) {
