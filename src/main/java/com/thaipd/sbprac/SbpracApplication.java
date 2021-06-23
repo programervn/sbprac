@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.List;
@@ -27,6 +28,7 @@ reference:
     https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
  */
 @SpringBootApplication
+@EnableJpaAuditing
 @EnableScheduling
 public class SbpracApplication implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(SbpracApplication.class);
@@ -41,7 +43,14 @@ public class SbpracApplication implements CommandLineRunner {
     BookService bookService;
 
     public static void main(String[] args) {
+        logger.info("STARTING THE APPLICATION ...");
         SpringApplication.run(SbpracApplication.class, args);
+        logger.info("APPLICATION STARTED SUCCESSFULLY");
+    }
+
+    @Override
+    public void run(String... args) {
+        logger.info("EXECUTING : command line runner");
     }
 
     public void testJpa1() {
@@ -93,10 +102,5 @@ public class SbpracApplication implements CommandLineRunner {
         Pattern p = Pattern.compile(REGEX);
         Matcher m = p.matcher(INPUT);   // get a matcher object
         logger.info("Match? ", m.matches());
-    }
-    @Override
-    public void run(String... args) {
-        //soccerService.addPlayer(1L,"Xavi Hernandez", "Midfielder", 6);
-        testGeneral();
     }
 }
